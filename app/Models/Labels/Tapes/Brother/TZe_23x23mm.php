@@ -21,7 +21,7 @@ class TZe_23x23mm extends Label
     private const MARGIN_ENDS  =  3.20;
 
     public function getHeight()       { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
-    public function getWidth() { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
+    public function getWidth()        { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
 
     public function getMarginTop()    { return Helper::convertUnit(self::MARGIN_SIDES, 'mm', $this->getUnit()); }
     public function getMarginBottom() { return Helper::convertUnit(self::MARGIN_SIDES, 'mm', $this->getUnit());}
@@ -41,27 +41,27 @@ class TZe_23x23mm extends Label
     public function write($pdf, $record) {
         $pa = $this->getPrintableArea();
 
-        $currentX = $pa->x1;
+        $currentX = $pa->x1 + (self::TAG_SIZE / 2);
         $currentY = $pa->y1;
         $usableWidth = $pa->w;
 
         $barcodeSize = $pa->h - self::TAG_SIZE;
 
         if ($record->has('barcode2d')) {
+            static::writeText(
+                $pdf, "# " . $record->get('tag'),
+                $pa->x1, $pa->y2 - self::TAG_SIZE,
+                'freemono', 'b', self::TAG_SIZE, 'C',
+                $barcodeSize, self::TAG_SIZE, true, 0
+            );
             static::write2DBarcode(
                 $pdf, $record->get('barcode2d')->content, $record->get('barcode2d')->type,
                 $currentX, $currentY,
                 $barcodeSize, $barcodeSize
             );
-            static::writeText(
-                $pdf, $record->get('tag'),
-                $pa->x1, $pa->y2 - self::TAG_SIZE,
-                'freemono', 'b', self::TAG_SIZE, 'C',
-                $barcodeSize, self::TAG_SIZE, true, 0
-            );
         } else {
             static::writeText(
-                $pdf, $record->get('tag'),
+                $pdf,"# " . $record->get('tag'),
                 $pa->x1, $pa->y2 - self::TAG_SIZE,
                 'freemono', 'b', self::TAG_SIZE, 'R',
                 $usableWidth, self::TAG_SIZE, true, 0
