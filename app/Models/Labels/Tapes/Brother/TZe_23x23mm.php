@@ -5,7 +5,7 @@ namespace App\Models\Labels\Tapes\Brother;
 use App\Helpers\Helper;
 use App\Models\Labels\Label;
 
-abstract class TZe_23x23mm extends Label
+class TZe_23x23mm extends Label
 {
     private const BARCODE_MARGIN =   1.40;
     private const TAG_SIZE       =   2.80;
