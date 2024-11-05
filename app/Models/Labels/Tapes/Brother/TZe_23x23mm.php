@@ -17,8 +17,8 @@ class TZe_23x23mm extends Label
     private const FIELD_MARGIN   =   0.15;
 
     private const HEIGHT       = 23.00;
-    private const MARGIN_SIDES =  2.80;
-    private const MARGIN_ENDS  =  2.80;
+    private const MARGIN_SIDES =  2.30;
+    private const MARGIN_ENDS  =  2.30;
 
     public function getHeight()       { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
     public function getWidth()        { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
