@@ -45,11 +45,11 @@ class TZe_23x23mm extends Label
         $currentY = $pa->y1;
         $usableWidth = $pa->w;
 
-        $barcodeSize = $pa->h - self::TAG_SIZE;
+        $barcodeSize = $pa->h;
 
         if ($record->has('barcode2d')) {
             static::writeText(
-                $pdf, "# " . $record->get('tag'),
+                $pdf, "#" . $record->get('tag'),
                 $pa->x1, $pa->y2 - self::TAG_SIZE,
                 'freemono', 'b', self::TAG_SIZE, 'C',
                 $barcodeSize, self::TAG_SIZE, true, 0
@@ -61,7 +61,7 @@ class TZe_23x23mm extends Label
             );
         } else {
             static::writeText(
-                $pdf,"# " . $record->get('tag'),
+                $pdf,"#" . $record->get('tag'),
                 $pa->x1, $pa->y2 - self::TAG_SIZE,
                 'freemono', 'b', self::TAG_SIZE, 'R',
                 $usableWidth, self::TAG_SIZE, true, 0
