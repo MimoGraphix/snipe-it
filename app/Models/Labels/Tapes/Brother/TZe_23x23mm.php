@@ -56,7 +56,7 @@ class TZe_23x23mm extends Label
             $barcodeSize += self::TAG_SIZE;
             static::writeText(
                 $pdf, "#" . $record->get('tag'),
-                $pa->x1, $pa->y2 - ( self::TAG_SIZE / 4),
+                $pa->x1, $pa->y2 - ( self::TAG_SIZE * 0.75),
                 'freemono', 'b', self::TAG_SIZE, 'C',
                 $barcodeSize, self::TAG_SIZE, true, 0
             );
