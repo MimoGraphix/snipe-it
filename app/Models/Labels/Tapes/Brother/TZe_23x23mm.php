@@ -17,8 +17,8 @@ class TZe_23x23mm extends Label
     private const FIELD_MARGIN   =   0.15;
 
     private const HEIGHT       = 23.00;
-    private const MARGIN_SIDES =  2.30;
-    private const MARGIN_ENDS  =  2.30;
+    private const MARGIN_SIDES =  2.40;
+    private const MARGIN_ENDS  =  2.40;
 
     public function getHeight()       { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
     public function getWidth()        { return Helper::convertUnit(self::HEIGHT, 'mm', $this->getUnit()); }
@@ -56,7 +56,7 @@ class TZe_23x23mm extends Label
             $barcodeSize += self::TAG_SIZE;
             static::writeText(
                 $pdf, "#" . $record->get('tag'),
-                $pa->x1, $pa->y2 - ( self::TAG_SIZE / 2),
+                $pa->x1, $pa->y2 - ( self::TAG_SIZE / 4),
                 'freemono', 'b', self::TAG_SIZE, 'C',
                 $barcodeSize, self::TAG_SIZE, true, 0
             );
